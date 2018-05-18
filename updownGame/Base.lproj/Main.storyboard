@@ -63,6 +63,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="InputBox" destination="ZBq-of-raU" id="w03-lb-GFz"/>
                         <outlet property="label" destination="zLO-Iq-GTj" id="tA5-kO-Jre"/>
                     </connections>
                 </viewController>

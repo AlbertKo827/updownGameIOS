@@ -9,8 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var label: UILabel!;
+    
+    var inputNum : Int8!
+    
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var InputBox : UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onClickEnter(sender : UIButton){
-        label.text = "0";
+        inputNum = Int8(InputBox.text!);
+        label.text = String(inputNum);
     }
 
 }
