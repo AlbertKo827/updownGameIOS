@@ -11,13 +11,18 @@ import UIKit
 class ViewController: UIViewController {
     
     var inputNum : Int8!
+    var answerNum : Int8 = Int8(arc4random_uniform(100) + 1);
     
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var ViewNum: UILabel!
+    @IBOutlet weak var Result: UILabel!
     @IBOutlet weak var InputBox : UITextField!
+    @IBOutlet weak var answerView : UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.ViewNum.text = "00"
+        self.answerView.text = String(self.answerNum);
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,8 +31,32 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onClickEnter(sender : UIButton){
-        inputNum = Int8(InputBox.text!);
-        label.text = String(inputNum);
+        self.inputNum = Int8(InputBox.text!)
+        
+        
+        checkAnswer(InputNum : self.inputNum)
+        
+        print("\(self.answerNum)")
+        print("\(self.inputNum!)")
+    }
+    
+    func checkAnswer(InputNum : Int8!){
+        if (InputNum <= 100) && (InputNum > 0) {
+            self.ViewNum.text = String(InputNum)
+            
+            if InputNum == self.answerNum {
+                self.Result.text = "정답입니다!"
+                
+                self.answerNum = Int8(arc4random_uniform(100) + 1);
+                self.answerView.text = String(self.answerNum);
+            }
+            else if InputNum < self.answerNum {
+                self.Result.text = "좀 더 위!"
+            }
+            else {
+                self.Result.text = "좀 더 아래!"
+            }
+        }
     }
 
 }
